@@ -27,7 +27,7 @@ public class MainWrapper {
     you.setAccNo("02-578-6321");
     
     // 내가 너한테 30000원을 이체하겠다.
-    my.transfer(you, 30000); // 내가 너한테 3만원 보낸다 
+    my.transfer(you, 100000); // 내가 너한테 3만원 이체한다. 
   
     // my 객체 조회하기 
     my.inquiry();    // 통장잔액 : 19999원
