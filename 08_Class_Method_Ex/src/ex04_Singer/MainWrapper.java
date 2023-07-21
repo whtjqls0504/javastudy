@@ -1,4 +1,4 @@
-package ex05_Singer;
+package ex04_Singer;
 
 public class MainWrapper {
 
