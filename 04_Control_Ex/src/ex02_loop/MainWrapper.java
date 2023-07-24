@@ -180,7 +180,7 @@ public class MainWrapper {
   
   public static void main(String[] args) {
 
-    ex08();
+    ex03();
 
     
 //    String str1 = String.format("%d", 10);  // 정수
