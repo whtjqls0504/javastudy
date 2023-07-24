@@ -4,20 +4,8 @@ public class MainWrapper {
 
   // main
   public static void main(String[] args) {
-    q14();
-    q13();
-    q12();
-    q11();
-    q10();
-    q9();
-    q8();
-    q7();
-    q6();
-    q5();
-    q4();
-    q3();
-    q2();
-    q1();
+    q101();
+
     
   }
   
@@ -36,6 +24,16 @@ public class MainWrapper {
     System.out.println(number + "의 절대값은 " + absNumber);
   }
   
+  public static void q101() {
+    int number = -44;
+    int absNumber;
+    if(number < 22) {
+      absNumber = -number;  // absNumber을 -number과 동일시 시켜라.
+    } else {  
+      absNumber = number;
+    }
+    System.out.println(number + "의 절대값은 " + absNumber + "입니다.");
+  }
   // q2. 나이에 따른 구분하기
   // 0 ~ 7    : 미취학아동
   // 8 ~ 13   : 초등학생
