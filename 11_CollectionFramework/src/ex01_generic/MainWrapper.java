@@ -17,8 +17,7 @@ public class MainWrapper {
     System.out.println(box2.getItem());
     
     // Integer> parse.int불렀을때 그 친구임
-  
-    
+
     // Person을 저장하는 box3
     Box<Person> box3 = new Box<Person>();
     box3.setItem(new Person("홍길동"));
