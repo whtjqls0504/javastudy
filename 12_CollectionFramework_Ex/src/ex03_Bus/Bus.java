@@ -8,6 +8,7 @@ public class Bus {
   private List<Seat> seats;      // List<Seat> seats 선언
   private final int LIMIT = 25;  // 25인승
   
+  
   /**
    * new Bus()가 실행되면<br>
    * List<Seat> seats에 LIMIT만큼의 빈 시트(new Seat())을 저장한다.<br>
