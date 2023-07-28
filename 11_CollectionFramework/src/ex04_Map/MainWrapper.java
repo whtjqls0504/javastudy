@@ -96,10 +96,31 @@ public class MainWrapper {
     }
   }
   
+  public static void ex04() {
+    
+    // HashMap 선언 & 생성 
+    Map<String, Object> map = new HashMap<String, Object>();
+    
+    // Entry 추가
+    map.put("id", "admin");
+    map.put("pw", "1234");
+    map.put("role", "DBA");
+    
+    // 향상 for 문 순회 (Entry 단위로 값을 빼는 entrySet() 메소드 활용)
+    for(Map.Entry<String , Object> entry : map.entrySet()) {
+      String key = entry.getKey();
+      Object value = entry.getValue();
+      System.out.println(key + ": "  + value);
+          
+    }
+  }
+  
+  
   public static void main(String[] args) {
     //ex01();
     //ex02();
-    ex03();
+    //ex03();
+    ex04();
   }
 
 }
