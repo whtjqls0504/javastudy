@@ -1,7 +1,9 @@
 package ex04_Map;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class MainWrapper {
 
@@ -34,16 +36,70 @@ public class MainWrapper {
     dict.put("겨울", "winter");
 
     // Value 확인(Key를 전달한다.)
-    System.out.println(dict.get("spring"));
+    System.out.println(dict.get("봄"));
     System.out.println(dict.get("여름"));
     System.out.println(dict.get("가을"));
     System.out.println(dict.get("겨울"));
+
     
     
   
   }  
+  
+  public static void ex02() {
+    
+    // HashMap 선언 & 생성 
+    Map<String, Object> person = new HashMap<String, Object>();
+    // 원하는 값을 전부 적을 수 있다 : Object ( 대부분 String / Integer 타입을 사용한다.)
+    
+    // Entry 저장 (Key는 변수명으로, Value는 변수 값으로 저장)
+    person.put("name", "홍길동");  // put은 수정이라는 뜻을 가지고있다.
+    person.put("age", 24);
+    person.put("work", "도적");
+    
+    
+    // Entry 수정(기존의 Key를 사용하면 해당 Key의 Value가 수정되는 방식)
+    person.put("name", "로라");
+    person.put("age", "22");
+    person.put("work", "직장인");
+    
+    // Value 확인 
+    System.out.println(person.get("name"));
+    System.out.println(person.get("age"));
+    System.out.println(person.get("work"));
+  }
+  
+  
+  public static void ex03() {
+    
+    // 반복문으로 돌리기
+    Map<String, Object> map = new HashMap<String, Object>();
+    
+    // Entry 저장
+    map.put("top", 10);
+    map.put("bottom", 20);
+    map.put("left", 30);
+    map.put("right", 40);
+  
+    // 반복자(Iterator)을 이용한 순회 
+    // 1. Key만 모두 꺼내서 Set에 저장한다. (keySet 메소드)
+    // 2. Set에 반복자(Iterator)를 붙여서 Key를 하나씩 꺼낸다.
+    // 3. get() 메소드에 Key를 전달하면 Value가 나온다. 
+    
+    Set<String> keySet = map.keySet();
+    Iterator<String> arm = keySet.iterator(); // arm 부여 -> keySet에 반복자 붙이기.
+    
+    while(arm.hasNext()) {
+      String key = arm.next();  // 값 꺼내기
+      Object value = map.get(key);
+      System.out.println(key + ": "  + value);
+    }
+  }
+  
   public static void main(String[] args) {
-    ex01();
+    //ex01();
+    //ex02();
+    ex03();
   }
 
 }
