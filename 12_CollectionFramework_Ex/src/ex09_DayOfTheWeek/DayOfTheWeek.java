@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 // 지시사항)
-//   1. AD 1년 1월 1일은 월요일이다.
+//    
 //   2. 평년은 1년이 365일이다.(2월 28일까지 있다.)
 //   3. 윤년은 1년이 366일이다.(2월 29일까지 있다.)
 //   4. 윤년이란?
@@ -42,6 +42,7 @@ public class DayOfTheWeek {
     int totalDay = 0;  // AD 1년 1월 1일 이후로 며칠이 지났는지 저장한 변수
     
     // year를 이용해 totalDay 누적
+    
     
     // month를 이용해 totalDay 누적(리스트 lastDay 활용)
     
