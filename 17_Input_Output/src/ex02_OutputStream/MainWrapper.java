@@ -37,6 +37,9 @@ public class MainWrapper {
     try {
         
         // 파일출력스트림 생성 (반드시 예외 처리가 필요한 코드)
+      
+        // 1. 생성모드 : 언제나 새로 만든다.(덮어쓰기)            new FileOutputStream(file)
+        // 2. 추가모드 : 새로 만들거나, 기존 파일에 추가한다.     new FileOutputStrema(file, true)
         fout = new FileOutputStream(file);  // 출력스트림의 목적지가. 파일
           
         // 출력할 데이터(파일로 보낼 데이터)
@@ -48,6 +51,8 @@ public class MainWrapper {
         fout.write(c);
         fout.write(b);  // c b에 있는 값들을 file로 
 
+        System.out.println(file.getPath() + " 파일 크기 : " + file.length() + "바이트");
+        
     } catch (IOException e) {
       e.printStackTrace(); // 예외처리
     } finally { 
@@ -60,7 +65,7 @@ public class MainWrapper {
       }
     
     }  
-    System.out.println(file.getPath() + " 파일 크기 : " + file.length() + "바이트");
+    
 
  }
   
@@ -83,6 +88,9 @@ public class MainWrapper {
       byte[] b = s.getBytes("UTF-8");
 
       fout.write(b);
+      
+      System.out.println(file.getPath() + " 파일 크기: " + file.length() + "바이트");
+      
        
     } catch (IOException e) {
       e.printStackTrace();
@@ -96,7 +104,7 @@ public class MainWrapper {
       }
       
     }
-    System.out.println(file.getPath() + " 파일 크기: " + file.length() + "바이트");
+   
   }
   
   /*
@@ -131,6 +139,7 @@ public class MainWrapper {
       bout.write(c);
       bout.write(s2.getBytes(StandardCharsets.UTF_8));  // getByte("UTF-8")과 동일하다
       
+      System.out.println(file.getPath() + " 파일 크기 : " + file.length());
       
     } catch (IOException e) {
           e.printStackTrace();
@@ -143,8 +152,6 @@ public class MainWrapper {
         e.printStackTrace();
       }
     }
-        
-    System.out.println(file.getPath() + " 파일 크기 : " + file.length());
     
   }
 
@@ -184,7 +191,7 @@ public class MainWrapper {
       dout.writeDouble(height);
       dout.writeUTF(school);  // writeUTF > school 메소드를 한국어로 변환. 
       
-      
+      System.out.println(file.getPath() + " 파일 크기 : " + file.length());
       
     } catch (IOException e) {
           e.printStackTrace();
@@ -198,7 +205,7 @@ public class MainWrapper {
       }
     }
         
-    System.out.println(file.getPath() + " 파일 크기 : " + file.length());
+    
     
   }
   
@@ -231,12 +238,9 @@ public class MainWrapper {
       Student student = new Student(name, age, height, school);
       
       // 출력(파일로 데이터 보내기)
-      oout.writeChars(name);
-      oout.writeInt(age);
-      oout.writeDouble(height);
-      oout.writeUTF(school);  // writeUTF > school 메소드를 한국어로 변환. 
+      oout.writeObject(student);
       
-      
+      System.out.println(file.getPath() + " 파일 크기 : " + file.length());
       
     } catch (IOException e) {
           e.printStackTrace();
@@ -250,7 +254,7 @@ public class MainWrapper {
       }
     }
         
-    System.out.println(file.getPath() + " 파일 크기 : " + file.length());
+    
     
   }
   
