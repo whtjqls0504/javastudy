@@ -1,9 +1,11 @@
 package ex02_OutputStream;
 
 import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.nio.charset.StandardCharsets;
 
 public class MainWrapper {
@@ -97,9 +99,15 @@ public class MainWrapper {
     System.out.println(file.getPath() + " 파일 크기: " + file.length() + "바이트");
   }
   
+  /*
+   *   java.io.BufferedOutputStream 클래스
+   *  1. 내부 버퍼를 가지고 있는 출력스트림이다.
+   *  2. 많은 데이터를 한 번에 출력하기 때문에 속도 향상을 위해서 사용한다.
+   *  3. 보조스트림이므로 메인스트림과 함께 사용한다. (fileoutputStream)
+   */
+  
   public static void ex03() {
-    
-    
+
     // 2줄로 안녕하세요 \n 반갑습니다.  
     File dir = new File("C:/storage");
     if(!dir.exists()) {
@@ -141,14 +149,115 @@ public class MainWrapper {
   }
 
   /*
-   *   java.io.BufferedOutputStream 클래스
-   *  1. 내부 버퍼를 가지고 있는 출력스트림이다.
-   *  2. 많은 데이터를 한 번에 출력하기 때문에 속도 향상을 위해서 사용한다.
-   *  3. 보조스트림이므로 메인스트림과 함께 사용한다. (fileoutputStream)
+   * java.io.DataOutputStream 클래스
+   * 1. int, double, String 등의 변수를 그대로 출력하는 출력스트림이다.
+   * 2. 보조스트림이므로 메인스트림과 함께 사용한다. (fileoutputStream)
+   * 
    */
   
+  public static void ex04() {
+    
+
+    // 2줄로 안녕하세요 \n 반갑습니다.  
+    File dir = new File("C:/storage");
+    if(!dir.exists()) {
+      dir.mkdirs();
+    } 
+    
+    File file = new File(dir, "ex04.dat");
+    
+    // 데이터출력스트림 선언
+    DataOutputStream dout = null;  
+    
+    try {
+      // 데이터출력스트림 생성(반드시 예외처리 필요한 코드이다.)
+      dout = new DataOutputStream(new FileOutputStream(file));
+    
+      String name = "tom";
+      int age = 50;                         // 나이 50
+      double height = 180.5;                // 신장 180.5cm
+      String school = "가산대학교";         // 대학교
+      
+      // 출력(파일로 데이터 보내기)
+      dout.writeChars(name);
+      dout.writeInt(age);
+      dout.writeDouble(height);
+      dout.writeUTF(school);  // writeUTF > school 메소드를 한국어로 변환. 
+      
+      
+      
+    } catch (IOException e) {
+          e.printStackTrace();
+    } finally {
+      try {
+        if (dout!=null) {
+          dout.close();
+        }
+      } catch (IOException  e) {
+        e.printStackTrace();
+      }
+    }
+        
+    System.out.println(file.getPath() + " 파일 크기 : " + file.length());
+    
+  }
+  
+  /*
+   * java.io.ObjectOutputStream 클래스 
+   * 1. 객체를 그대로 출력하는 출력 스트림이다.
+   * 2. 직렬화(Serializable)된 객체를 내보낼 수 있다.
+   * 3. 보조스트림이므로 메인스트림과 함께 사용한다.
+   */
+ 
+ public static void ex05() {
+    File dir = new File("C:/storage");
+    if(!dir.exists()) {
+      dir.mkdirs();
+    } 
+    
+    File file = new File(dir, "ex05.dat");
+    
+    // 데이터출력스트림 선언
+    ObjectOutputStream oout = null;  
+    
+    try {
+      // 데이터출력스트림 생성(반드시 예외처리 필요한 코드이다.)
+      oout = new ObjectOutputStream(new FileOutputStream(file));
+    
+      String name = "tom";
+      int age = 50;                         // 나이 50
+      double height = 180.5;                // 신장 180.5cm
+      String school = "가산대학교";         // 대학교
+      Student student = new Student(name, age, height, school);
+      
+      // 출력(파일로 데이터 보내기)
+      oout.writeChars(name);
+      oout.writeInt(age);
+      oout.writeDouble(height);
+      oout.writeUTF(school);  // writeUTF > school 메소드를 한국어로 변환. 
+      
+      
+      
+    } catch (IOException e) {
+          e.printStackTrace();
+    } finally {
+      try {
+        if (oout!=null) {
+          oout.close();
+        }
+      } catch (IOException  e) {
+        e.printStackTrace();
+      }
+    }
+        
+    System.out.println(file.getPath() + " 파일 크기 : " + file.length());
+    
+  }
+  
+
+  
   public static void main(String[] args) {
-    ex03();
+    ex05();
   }
 
 }
