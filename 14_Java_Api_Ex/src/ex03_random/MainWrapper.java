@@ -1,3 +1,4 @@
+
 package ex03_random;
 
 public class MainWrapper {
