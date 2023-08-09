@@ -121,35 +121,12 @@ public class MainWrapper {
 
   }
 
-  public static Connection getConnection2() {
-
-    Connection con = null;
-    
-    try(BufferedReader reader = new BufferedReader(new FileReader("src/db.properties"))) {
-      
-      Class.forName("oracle.jdbc.OracleDriver");
-      
-      Properties p = new Properties();
-      p.load(reader);
-      
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    
-    return con;
-    
-    
-    
-  }
   
   
   public static void main(String[] args) throws Exception{
 //    ex01();
 //    ex02();
 //    ex03();
-//    Connection con = getConnection();
-//    System.out.println("Oracle에 접속되었습니다.");
-//    con.close();
     Connection con = getConnection();
     System.out.println("오라클에 접속되었습니다.");
     con.close();
