@@ -61,19 +61,19 @@ public class MainWrapper {
     File cp = new File(dir, "alphabet2.txt");
 
     // try-catch-resources
-    try (BufferedReader br = new BufferedReader(new FileReader(src)),
+    try (BufferedReader br = new BufferedReader(new FileReader(src));
         BufferedWriter bw = new BufferedWriter(new FileWriter(cp)))  
     
     {
      
-      // 복사 단위 5byte
-      byte[] b = new byte[5]; // 0, 1, 2, 3, 4
+      // 복사 단위 5 char
+      char[] cbuf = new char[5];
       
       // 실제로 읽은 byte 수
       int readChar = 0;
       
       // 복사 
-      while((readByte = br.read(cbuf)) != -1) {
+      while((readChar = br.read(cbuf)) != -1) {
         bw.write(cbuf, 0, readChar); 
       }
       
