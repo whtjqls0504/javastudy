@@ -2,6 +2,8 @@ package dto;
 
 import java.sql.Date;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 public class UserDto {
 
   private int user_no;
@@ -59,6 +61,9 @@ public class UserDto {
     return "UserDto [user_no=" + user_no + ", user_id=" + user_id + ", user_name=" + user_name + ", joined_at="
         + joined_at + "]";
   }
+  
+
+  
   
   
   
